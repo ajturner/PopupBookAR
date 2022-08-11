@@ -8,6 +8,7 @@ using UnityEngine.Events;
 
 public class LoadData : MonoBehaviour
 {
+    // Set of markers to randomly use (variations like trees or buildings)
     public List<GameObject> allMarkers;
 
     [SerializeField, Tooltip("Search radius for features, in meters")]
@@ -21,7 +22,9 @@ public class LoadData : MonoBehaviour
     // DC Trees
     [SerializeField, Tooltip("URL to the ArcGIS Feature Layer")]
     public string markerLayerUrl = "https://services.arcgis.com/bkrWlSKcjUDFDtgw/ArcGIS/rest/services/DC_Trees_Republished/FeatureServer/0";
-    [SerializeField, Tooltip("Feature Layer attribute to show on text overlay.")]
+    [SerializeField, Tooltip("Attribute of unique identifier.")]
+    public string markerLayerId = "OBJECTID";
+    [SerializeField, Tooltip("Attribute to show on text overlay.")]
     public string markerLayerDisplay = "OBJECTID";
     [SerializeField, Tooltip("Geometry type of the feature layer (point, line, polygon)")]
     public string markerLayerType = "point";
@@ -30,20 +33,37 @@ public class LoadData : MonoBehaviour
 
 
     public LocationController locationController;
+    public Button loadDataButton;
+
+    // Store created markers to prevent duplicates
+    private Dictionary<string, GameObject> m_markers = new Dictionary<string, GameObject>();
+
+    private bool m_locationUpdatedSubscribed = false;
 
     void Awake() {
-        // Listen for location updates
-        locationController.locationUpdated.AddListener(UpdateLocation);
+        loadDataButton.onClick.AddListener(UpdateData);
     }
 
-    void UpdateLocation()
+    void disableButton() {
+        loadDataButton.interactable = false;
+
+    }
+
+    public void UpdateData()
     {    
         print("GetData: " + markerLayerUrl);
 
-        GeoService.GetData(markerLayerUrl, locationController.viewerLocation, markerLayerType, markerDistance, addMarkers);
+        // Only subscribe to location updates the first time trees are loaded
+        if(!m_locationUpdatedSubscribed) {
+            // Listen for location updates
+            locationController.locationUpdated.AddListener(UpdateData);
+            m_locationUpdatedSubscribed = true;
+        }
 
-        // Debug - display lon/lat on screen
-        // GetComponent<TextMesh>().text = viewerLocation.ToString();   
+        GeoService.GetData(markerLayerUrl, locationController.viewerLocation, markerLayerType, markerDistance, addMarkers);
+        
+        disableButton();
+
     }
     void addMarkers(JSONNode features) 
     {
@@ -55,7 +75,18 @@ public class LoadData : MonoBehaviour
                 markerLocation = new Vector2(features[i]["centroid"]["y"], features[i]["centroid"]["x"]);
             } 
             
-            GameObject marker = addMarker(markerLocation, features[i]["attributes"][markerLayerDisplay]);
+            string markerId = features[i]["attributes"][markerLayerId];
+
+            // Check if marker is already created. if not then add to scene and memory hash
+            if(markerId != null) {
+                m_markers.TryGetValue(markerId, out GameObject existingMarker);
+                
+                if(!existingMarker) {
+                    GameObject marker = addMarker(markerLocation, features[i]["attributes"][markerLayerDisplay]);
+                    m_markers.Add(markerId, marker);
+                }
+            }
+
         }                                   
     }
 

@@ -204,12 +204,17 @@ MonoBehaviour:
   - {fileID: 1754235646947164829, guid: c64d739a152214c46b52501f7f77e80b, type: 3}
   - {fileID: 2621360480878395537, guid: 327f1b4ded80841b8832f2737297963f, type: 3}
   - {fileID: 6538788253360991771, guid: 738dca45aae1e46679e10e01e6887954, type: 3}
-  - {fileID: 3121342806972384931, guid: 05c8cd0e041f049dfbecebfdc820c21b, type: 3}
   - {fileID: 5872041738792959932, guid: 53800b9e271fa428c80f3a2c59dea366, type: 3}
-  - {fileID: 8106519407589784840, guid: 5b1b06cb706364644a65e548bc0c070f, type: 3}
   - {fileID: 5872041738792959932, guid: f1130f6df07244c2191ac3d8a2813028, type: 3}
-  - {fileID: 5872041738792959932, guid: b2f2abedacfee4a4bb38629ec98f559d, type: 3}
   - {fileID: 8106519407589784840, guid: 93f5343de31cf45858ce5b0a561e8a51, type: 3}
+  - {fileID: 5872041738792959932, guid: c20a994f03c7446edbb2899c4b210c89, type: 3}
+  - {fileID: 8106519407589784840, guid: 5b1b06cb706364644a65e548bc0c070f, type: 3}
+  - {fileID: 5872041738792959932, guid: b2f2abedacfee4a4bb38629ec98f559d, type: 3}
+  - {fileID: 5872041738792959932, guid: 244dec16993524987a617b6f5bfa6130, type: 3}
+  - {fileID: 5872041738792959932, guid: 553f6f9e8be0f413f80315e61619cc3f, type: 3}
+  - {fileID: 5872041738792959932, guid: 2de9b4f5acd574c49a2ddf66277424d0, type: 3}
+  - {fileID: 5872041738792959932, guid: 45535ccef28494223bd7b68315e72456, type: 3}
+  - {fileID: 5872041738792959932, guid: d0111ffbd079b404592e6e4cd8e6e496, type: 3}
   scaleFactor: {x: 1, y: 1, z: 1}
 --- !u!81 &89245780
 AudioListener:
@@ -854,6 +859,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1803914252}
+  - {fileID: 1109798024}
   - {fileID: 1457539724}
   - {fileID: 2057696642}
   m_Father: {fileID: 331496460}
@@ -918,6 +924,87 @@ MonoBehaviour:
   infoPanel: {fileID: 1165270053}
   dismissButton: {fileID: 1457539725}
   homeButton: {fileID: 2057696643}
+--- !u!1 &1109798023
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1109798024}
+  - component: {fileID: 1109798026}
+  - component: {fileID: 1109798025}
+  m_Layer: 5
+  m_Name: Intro
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1109798024
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1109798023}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 2, y: 2, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 969071171}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 406}
+  m_SizeDelta: {x: 400, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1109798025
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1109798023}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_FontData:
+    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_FontSize: 24
+    m_FontStyle: 0
+    m_BestFit: 0
+    m_MinSize: 2
+    m_MaxSize: 48
+    m_Alignment: 4
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: "Get a set of community design cards. \nThen point the camera at each card
+    and start designing your community!"
+--- !u!222 &1109798026
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1109798023}
+  m_CullTransparentMesh: 0
 --- !u!1 &1165270049
 GameObject:
   m_ObjectHideFlags: 0
@@ -1256,7 +1343,7 @@ GameObject:
   - component: {fileID: 1803914254}
   - component: {fileID: 1803914253}
   m_Layer: 5
-  m_Name: Text
+  m_Name: Title
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1279,8 +1366,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 222}
-  m_SizeDelta: {x: 300, y: 30}
+  m_AnchoredPosition: {x: 0, y: 714}
+  m_SizeDelta: {x: 600, y: 60}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1803914253
 MonoBehaviour:
@@ -1304,11 +1391,11 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 24
+    m_FontSize: 48
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 2
-    m_MaxSize: 40
+    m_MaxSize: 48
     m_Alignment: 4
     m_AlignByGeometry: 0
     m_RichText: 1
